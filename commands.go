@@ -309,7 +309,7 @@ func importBind(args importArgs) {
 		}
 	} else {
 		resp := batchChanges(additions, deletions, zone)
-		fmt.Printf("%d records imported (%d changes / %d additions / %d deletions)\n", len(records), len(additions)+len(deletions), len(additions), len(deletions))
+		fmt.Printf(" -- %d records imported (%d changes / %d additions / %d deletions)\n", len(records), len(additions)+len(deletions), len(additions), len(deletions))
 
 		if args.wait && resp != nil {
 			waitForChange(resp.ChangeInfo)

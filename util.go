@@ -127,13 +127,13 @@ func lookupZone(nameOrId string) *route53.HostedZone {
 }
 
 func waitForChange(change *route53.ChangeInfo) {
-	fmt.Printf("Waiting for sync")
+	fmt.Printf(" >> Waiting for sync")
 	for {
 		req := route53.GetChangeInput{Id: change.Id}
 		resp, err := r53.GetChange(&req)
 		fatalIfErr(err)
 		if *resp.ChangeInfo.Status == "INSYNC" {
-			fmt.Println("\nCompleted")
+			fmt.Println("\n -- Completed")
 			break
 		} else if *resp.ChangeInfo.Status == "PENDING" {
 			fmt.Printf(".")
